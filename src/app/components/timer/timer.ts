@@ -33,22 +33,16 @@ export class Timer implements OnDestroy{
       this.cdr.markForCheck();
       if (this.timeLeft <= 0) {
         this.onFinish();
+        this.startTimer();
       }
     }, 1000);
   }
 
   ngOnInit(){
     this.startTimer();
-      console.log("Timer restarted");
-    if (this.startTimer === null ) {
+    //if (this.startTimer === null ) {
       //restartfunc();
-    
-    }
-  }
-
-  restart(){
-    this.startTimer();
-      console.log("Timer restarted");
+    //}
   }
 
   onFinish() {

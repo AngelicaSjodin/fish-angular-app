@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './inventory.scss',
 })
 export class Inventory {
-  inventoryItems = [];
+  
+  inventory = [];
+
+  //fishhhs
+  //addItem(fish: any) {
+  //  this.inventory.push(fish);
+ // }
 }

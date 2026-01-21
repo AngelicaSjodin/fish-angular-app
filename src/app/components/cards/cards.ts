@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './cards.scss',
 })
 export class Cards {
-  cards = [];
+  //
 
 
 }
