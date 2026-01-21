@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, NgZone, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnDestroy, 
+  provideAppInitializer,inject } from '@angular/core';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-timer',
@@ -12,39 +14,43 @@ export class Timer implements OnDestroy{
   
   rollsCounter = 0;
 
-  timeLeft = 9;
+  timeLeft = 3;
   finished = false;
 
-  //constructor(private ngZone: NgZone) { }
-  constructor(private cf: ChangeDetectionStrategy) { }
+  constructor(private cdr: ChangeDetectorRef) {}
 
+  
   startTimer() {
     this.finished = false;
-    this.timeLeft = 9;
-
+    this.timeLeft = 3;
+    
     if (this.intervalId !== null  ) {
       clearInterval(this.intervalId);
     }
 
-    //ngzone eller
-    //this.ngZone.runOutsideAngular(() => {
-    //  this.intervalId = window.setInterval(() => {
-    //    this.ngZone.run(() => {
-    //      this.timeLeft--;
-    //      if (this.timeLeft <= 0) {
-    //        this.onFinish();
-    //      }
-    //      });
-    //    }, 1000);
-    //    });
-
     this.intervalId = window.setInterval(() => {
       this.timeLeft--;
+      this.cdr.markForCheck();
       if (this.timeLeft <= 0) {
         this.onFinish();
       }
     }, 1000);
   }
+
+  ngOnInit(){
+    this.startTimer();
+      console.log("Timer restarted");
+    if (this.startTimer === null ) {
+      //restartfunc();
+    
+    }
+  }
+
+  restart(){
+    this.startTimer();
+      console.log("Timer restarted");
+  }
+
   onFinish() {
     this.rollsCounter++;
     console.log('rolls: ' + this.rollsCounter);
@@ -61,3 +67,4 @@ export class Timer implements OnDestroy{
   }
 
 }
+

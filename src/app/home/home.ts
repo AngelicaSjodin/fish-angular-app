@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { Roll } from '../components/roll/roll';
-import { timer } from 'rxjs';
-import { Timer } from '../components/timer/timer';
+import { Game } from '../game/game';
 
 @Component({
   selector: 'app-home',
-  imports: [Roll, Timer],
+  imports: [Game],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
-
+  startGame() {
+    window.location.href = '/game';
+  }
 }
