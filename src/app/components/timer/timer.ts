@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnDestroy, 
   provideAppInitializer,inject } from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { Service } from '../../services/service';
 
 @Component({
   selector: 'app-timer',
@@ -10,6 +11,9 @@ import { bootstrapApplication } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Timer implements OnDestroy{
+  //service delar variabler mellan komponenter
+  
+  
   intervalId: number | null = null;
   
   rollsCounter = 0;
