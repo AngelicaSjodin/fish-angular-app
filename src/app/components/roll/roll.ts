@@ -6,7 +6,7 @@ import { Service } from '../../services/service';
 
 @Component({
   selector: 'app-roll',
-  imports: [Timer],
+  imports: [],
   templateUrl: './roll.html',
   styleUrl: './roll.scss',
 })
