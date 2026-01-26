@@ -10,8 +10,4 @@ export class Inventory {
   
   inventory = [];
 
-  //fishhhs
-  //addItem(fish: any) {
-  //  this.inventory.push(fish);
- // }
 }

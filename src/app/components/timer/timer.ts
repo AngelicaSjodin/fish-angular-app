@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnDestroy, 
-  provideAppInitializer,inject } from '@angular/core';
+  provideAppInitializer,inject, 
+  signal} from '@angular/core';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { Service } from '../../services/service';
 
@@ -10,32 +11,27 @@ import { Service } from '../../services/service';
   styleUrl: './timer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class Timer implements OnDestroy{
+export class Timer{
   //service delar variabler mellan komponenter
   
-  
-  intervalId: number | null = null;
-  
-  rollsCounter = 0;
 
-  timeLeft = 3;
-  finished = false;
+  timeLeft = signal(3);
+  private intervalId: number | null = null;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(public services: Service) {}
 
   
   startTimer() {
-    this.finished = false;
-    this.timeLeft = 3;
+    this.timeLeft.set(3);
     
-    if (this.intervalId !== null  ) {
+    if (this.intervalId !== null) {
       clearInterval(this.intervalId);
     }
 
-    this.intervalId = window.setInterval(() => {
-      this.timeLeft--;
-      this.cdr.markForCheck();
-      if (this.timeLeft <= 0) {
+    this.intervalId = setInterval(() => {
+      this.timeLeft.update(value => value - 1);
+
+      if (this.timeLeft() <= 0) {
         this.onFinish();
         this.startTimer();
       }
@@ -50,19 +46,15 @@ export class Timer implements OnDestroy{
   }
 
   onFinish() {
-    this.rollsCounter++;
-    console.log('rolls: ' + this.rollsCounter);
-    if(this.intervalId !== null){
-      clearInterval(this.intervalId);
-      this.intervalId = null;
-    }
+    this.services.addRoll();
+    console.log('Timer finished. Roll added.');
   }
 
-  ngOnDestroy(): void {
-    if (this.intervalId !== null) {
-      clearInterval(this.intervalId);
-    }
-  }
+  //ngOnDestroy(): void {
+    //if (this.intervalId !== null) {
+      //clearInterval(this.intervalId);
+    //}
+  //}
 
 }
 
