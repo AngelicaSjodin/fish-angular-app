@@ -23,8 +23,8 @@ export class Service {
 
   //till cards comp
   cards: Card[] = [
-    { id: 1, name: 'Ace of Spades', image: 'cat.jpeg' },
-    { id: 2, name: 'King of Hearts', image: 'cat.jpeg' },
+    { id: 1, name: 'Ace of Spades', image: 'src/assets/cat.jpeg' },
+    { id: 2, name: 'King of Hearts', image: 'src/app/images/cat.jpeg' },
   ];
 
   drawCard = signal<Card | null>(null);

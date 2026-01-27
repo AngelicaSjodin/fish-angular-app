@@ -11,7 +11,6 @@ import { Service } from '../../services/service';
   styleUrl: './roll.scss',
 })
 export class Roll {
-  service: any;
   //plan?
   //tar bort 1 från count i timerComp, slumpar fram ett kort från CardsComp, skicka vidare till inventoryComp
   //vilkor, count kan inte gå under 0
@@ -20,12 +19,9 @@ export class Roll {
   
   roll() {
     if (this.services.useRoll()) {
-      this.mixCards();
+      this.services.drawRandomCard();
     }else {
       console.log('No rolls left');
     }
-  }
-  mixCards() {
-    //slumpar fram ett kort
   }
 }
