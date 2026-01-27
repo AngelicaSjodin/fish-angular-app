@@ -8,5 +8,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
-  title = signal('fish-angular-app');
+  title = signal('Cool Fish Game');
 }
