@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Game } from '../game/game';
+//import { Game } from '../game/game';
 
 @Component({
   selector: 'app-home',
-  imports: [Game],
+  imports: [],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

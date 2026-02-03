@@ -1,14 +1,28 @@
-//.rollingScreen{
-//    border-color: gray;
-//    border-style: solid;
-//    border-width: 0.3em;
+hr{
+    height: 0.1em;
+    border: none;
+    background-color: #AAAAAA;
+}
 
-//    width: 8em;
-//    height: 8em;
-//    position: relative;
-//    margin: auto;
-//    margin-bottom: 1em;
-//}
+.drop-rate{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+
+    width: 15em;
+    height: auto;
+
+    border: 0.2em solid #AAAAAA;
+    border-radius: 8px;
+}
+
+.gray-text{
+    color: #AAAAAA;
+    font-family: Inria Serif;
+
+    font-weight: bold;
+    font-size: 1.2em;
+}
 
 .background {
     position: absolute;
@@ -25,3 +39,14 @@
     text-align: center;
 }
 
+//.rollingScreen{
+//    border-color: gray;
+//    border-style: solid;
+//    border-width: 0.3em;
+
+//    width: 8em;
+//    height: 8em;
+//    position: relative;
+//    margin: auto;
+//    margin-bottom: 1em;
+//}
