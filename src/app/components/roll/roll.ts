@@ -14,17 +14,15 @@ export class Roll {
   roll() {
     if (this.services.useRoll()) {
       this.services.drawRandomCard();
+      this.sound();
     }else {
       alert('No rolls left');
       console.log('No rolls left');
     }
   }
 
-  buttonSound(){
-    let audio = new Audio();
-    audio.src = "splash.mp3";
-    audio.load();
-    audio.play();
+  sound(){
+    this.services.buttonSound();
   }
 
   

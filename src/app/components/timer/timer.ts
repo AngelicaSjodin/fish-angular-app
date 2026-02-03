@@ -22,7 +22,7 @@ export class Timer{
 
   
   startTimer() {
-    this.timeLeft.set(3);
+    this.timeLeft.set(5);
     
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
@@ -36,6 +36,10 @@ export class Timer{
         this.startTimer();
       }
     }, 1000);
+  }
+
+  backgroundSound(){
+
   }
 
   ngOnInit(){

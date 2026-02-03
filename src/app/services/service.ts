@@ -7,12 +7,12 @@ import { Card } from '../components/cards/card.model';
 export class Service {
   rollsCounter = signal(0);
 
-  //till timer comp
+  //till timer comp, ökar 
   addRoll() {
     this.rollsCounter.update(v => v + 1);
   }
 
-  //till roll comp
+  //till roll comp, minskar + korten + randomizer
   useRoll(): boolean {
     if (this.rollsCounter() > 0) {
       this.rollsCounter.update(v => v - 1);
@@ -21,7 +21,6 @@ export class Service {
     return false;
   }
 
-  //till cards comp
   cards: Card[] = [
     { id: 1, name: 'fish', image: 'lax.png' },
     { id: 2, name: 'fish', image: 'talipa.png' },
@@ -40,26 +39,25 @@ export class Service {
   }
 
   //cardsWithDifferentRandomChance comp -------------------
-  cardsWithChances: { card: Card; chance: number }[] = [
-    { card: { id: 1, name: 'cat', image: 'cat.jpeg' }, chance: 95 },
-    { card: { id: 2, name: 'also-a-cat', image: 'also-a-cat.jpeg' }, chance: 5 },
-  ];
-  drawCardWithChance = signal<Card | null>(null);
 
-  drawRandomCardWithChance() {
-    const totalChance = this.cardsWithChances.reduce(
-      (sum, item) => sum + item.chance,
-      0
-    );
-    const randomNum = Math.random() * totalChance;
-    let cumulativeChance = 0;
+  //sounds, i roll och timer?
+  buttonSound(){
+    let audio = new Audio();
+    audio.src = "rod-throw.mp3";
+    audio.load();
+    audio.play();
+  }
 
-    for (const item of this.cardsWithChances) {
-      cumulativeChance += item.chance;
-      if (randomNum <= cumulativeChance) {
-        this.drawCardWithChance.set(item.card);
-        return;
-      }
-    }
-    this.drawCardWithChance.set(null);
-  }}
+  backgroundSound(){
+    let audio = new Audio();
+    audio.src = "seagulls.mp3";
+    
+    audio.load();
+    audio.loop = true;
+    audio.play();
+    
+  }
+
+
+
+}
