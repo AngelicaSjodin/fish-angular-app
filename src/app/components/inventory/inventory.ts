@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Service } from '../../services/service';
+
 
 @Component({
   selector: 'app-inventory',
@@ -8,6 +10,6 @@ import { Component } from '@angular/core';
 })
 export class Inventory {
   
-  inventory = [];
+  constructor(public services: Service){}
 
 }

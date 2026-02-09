@@ -1,1 +1,13 @@
 
+<div class="inventory">
+    @for (card of services.inventory(); track card.id){
+        <div class="card">
+            <img [src]="card.image" [alt]="card.name">
+        </div>
+    }
+
+    @if (services.inventory().length === 0){
+        <p class="text">inventory empty</p>
+    }
+   
+</div>

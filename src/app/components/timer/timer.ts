@@ -22,7 +22,7 @@ export class Timer{
 
   
   startTimer() {
-    this.timeLeft.set(5);
+    this.timeLeft.set(3);
     
     if (this.intervalId !== null) {
       clearInterval(this.intervalId);
@@ -33,7 +33,7 @@ export class Timer{
 
       if (this.timeLeft() <= 0) {
         this.onFinish();
-        this.startTimer();
+        this.timeLeft.set(3);
       }
     }, 1000);
   }

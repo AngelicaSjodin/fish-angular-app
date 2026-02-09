@@ -1,0 +1,16 @@
+.text{
+    color: #ACB554;
+    text-align: center;
+}
+
+.inventory{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px,1em));
+    gap: 12px;
+
+    justify-items: start;
+}
+
+.card img {
+     display: block;
+}
